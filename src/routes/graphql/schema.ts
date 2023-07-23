@@ -1,6 +1,11 @@
 import { buildSchema } from "graphql";
 
 export const schemaGraphql = buildSchema(`
+  enum MemberTypeId {
+    basic
+    business
+  }
+
   type User {
     id: ID!
     name: String!
@@ -35,6 +40,10 @@ export const schemaGraphql = buildSchema(`
     posts: [Post!]!
     users: [User!]!
     profiles: [Profile!]!
+    memberType(id: MemberTypeId!): MemberType
+    post(id: ID!): Post
+    user(id: ID!): User
+    profile(id: ID!): Profile
   }
 `);
 

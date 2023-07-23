@@ -24,6 +24,10 @@ const plugin: FastifyPluginAsyncTypebox = async (fastify) => {
           posts: () => prisma.post.findMany(),
           users: () => prisma.user.findMany(),
           profiles: () => prisma.profile.findMany(),
+          memberType: (args: { id: string }) => prisma.memberType.findUnique({ where: { id: args.id } }),
+          post: (args: { id: string }) => prisma.post.findUnique({ where: { id: args.id } }),
+          user: (args: { id: string }) => prisma.user.findUnique({ where: { id: args.id } }),
+          profile: (args: { id: string }) => prisma.profile.findUnique({ where: { id: args.id } }),
         }
 
         const result = await graphql({ schema: schemaGraphql, rootValue: root, source: query, variableValues: variables, contextValue: { fastify } });
