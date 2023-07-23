@@ -31,9 +31,10 @@ export const schemaGraphql = buildSchema(`
   }
 
   type Query {
-    memberTypes: [MemberType]
-    users: [User]!
-    posts: [Post]!
+    memberTypes: [MemberType!]!
+    posts: [Post!]!
+    users: [User!]!
+    profiles: [Profile!]!
   }
 `);
 
