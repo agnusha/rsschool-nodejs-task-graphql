@@ -13,7 +13,7 @@ export const schemaGraphql = buildSchema(`
     name: String!
     balance: Float!
     posts: [Post]!
-    profiles: [Profile]!
+    profile: Profile
   }
 
   type Post {
@@ -48,4 +48,3 @@ export const schemaGraphql = buildSchema(`
     profile(id: UUID!): Profile
   }
 `);
-
