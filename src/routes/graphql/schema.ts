@@ -12,7 +12,7 @@ export const schemaGraphql = buildSchema(`
     id: UUID!
     name: String!
     balance: Float!
-    posts: [Post]!
+    posts: [Post!]
     profile: Profile
   }
 
