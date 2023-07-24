@@ -9,7 +9,7 @@ export const schemaGraphql = buildSchema(`
   }
 
   type User {
-    id: ID!
+    id: UUID!
     name: String!
     balance: Float!
     posts: [Post]!
@@ -17,14 +17,14 @@ export const schemaGraphql = buildSchema(`
   }
 
   type Post {
-    id: ID!
+    id: UUID!
     title: String!
     content: String!
     author: User!
   }
 
   type Profile {
-    id: ID!
+    id: UUID!
     isMale: Boolean!
     yearOfBirth: Int!
     user: User!
@@ -32,7 +32,7 @@ export const schemaGraphql = buildSchema(`
   }
 
   type MemberType {
-    id: ID!
+    id: UUID!
     discount: Float!
     postsLimitPerMonth: Int!
   }
