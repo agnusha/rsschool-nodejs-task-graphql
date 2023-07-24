@@ -14,17 +14,32 @@ async function userResolver(resolveInfo: GraphQLResolveInfo, prisma: PrismaClien
 }
 
 function getCondition(id: string, isPostsRequested: boolean, isProfileRequested: boolean): UserResolverCondition {
-    return {
+    const condition: UserResolverCondition = {
         where: { id },
-        include: {
-            posts: {
-                select: {
-                    id: isPostsRequested,
-                }
-            },
-            profile: { include: { memberType: { select: { id: isProfileRequested } } } },
-        }
+        include: {},
     };
+
+    if (isPostsRequested) {
+        condition.include.posts = {
+            select: {
+                id: true,
+            },
+        };
+    }
+
+    if (isProfileRequested) {
+        condition.include.profile = {
+            include: {
+                memberType: {
+                    select: {
+                        id: true,
+                    },
+                },
+            },
+        };
+    }
+
+    return condition
 }
 
 function getInclude(resolveInfo: GraphQLResolveInfo): { isPostsRequested: boolean; isProfileRequested: boolean; } {

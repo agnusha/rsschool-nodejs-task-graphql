@@ -14,6 +14,13 @@ export const schemaGraphql = buildSchema(`
     balance: Float!
     posts: [Post!]
     profile: Profile
+    userSubscribedTo: [SubscribersOnAuthors!]
+    subscribedToUser: [SubscribersOnAuthors!]
+  }
+
+  type SubscribersOnAuthors {
+    subscriber: User!
+    author: User!
   }
 
   type Post {
